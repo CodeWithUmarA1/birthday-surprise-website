@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Our World - Happy Birthday</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Playfair Display & Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#90003d",
+                    "outline-variant": "#5b3f44",
+                    "tertiary": "#ffb1c2",
+                    "surface": "#220c18",
+                    "on-background": "#ffd8e9",
+                    "primary-fixed": "#ffd9de",
+                    "on-surface": "#ffd8e9",
+                    "error": "#ffb4ab",
+                    "tertiary-fixed": "#ffd9e0",
+                    "on-secondary": "#660029",
+                    "inverse-on-surface": "#422936",
+                    "inverse-primary": "#bc004f",
+                    "primary": "#ffb2bf",
+                    "surface-container-lowest": "#1c0713",
+                    "on-secondary-fixed": "#3f0017",
+                    "error-container": "#93000a",
+                    "primary-container": "#ff4d80",
+                    "secondary-fixed-dim": "#ffb1c0",
+                    "surface-container": "#301825",
+                    "on-primary": "#660028",
+                    "on-error": "#690005",
+                    "on-tertiary-fixed-variant": "#871842",
+                    "surface-container-high": "#3b2230",
+                    "surface-dim": "#220c18",
+                    "on-primary-container": "#5a0022",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-low": "#2b1421",
+                    "secondary": "#ffb1c0",
+                    "on-surface-variant": "#e4bdc2",
+                    "surface-tint": "#ffb2bf",
+                    "on-primary-fixed": "#3f0016",
+                    "on-tertiary-fixed": "#3f0019",
+                    "on-tertiary": "#66002c",
+                    "tertiary-fixed-dim": "#ffb1c2",
+                    "on-primary-fixed-variant": "#90003b",
+                    "tertiary-container": "#e8648a",
+                    "outline": "#ab888d",
+                    "secondary-container": "#d6055f",
+                    "background": "#220c18",
+                    "surface-variant": "#472d3b",
+                    "on-tertiary-container": "#590026",
+                    "secondary-fixed": "#ffd9df",
+                    "on-secondary-container": "#ffecee",
+                    "primary-fixed-dim": "#ffb2bf",
+                    "inverse-surface": "#ffd8e9",
+                    "surface-bright": "#4c313f",
+                    "surface-container-highest": "#472d3b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "16px",
+                    "container-max": "1200px",
+                    "margin-mobile": "20px",
+                    "stack-md": "32px",
+                    "unit": "8px",
+                    "gutter": "24px",
+                    "stack-lg": "64px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Playfair Display"],
+                    "label-sm": ["Inter"],
+                    "headline-md-mobile": ["Playfair Display"],
+                    "display-script": ["Playfair Display"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                    "label-sm": ["12px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                    "headline-md-mobile": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                    "display-script": ["56px", { "lineHeight": "1.1", "fontWeight": "400" }],
+                    "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                    "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                    "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #0a0005;
+            color: #ffd8e9;
+            overflow-x: hidden;
+        }
+        
+        /* Atmospheric Glows */
+        .ambient-glow {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80vw;
+            height: 80vh;
+            background: radial-gradient(circle, rgba(112,0,49,0.4) 0%, rgba(10,0,5,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Glassmorphism Classes */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        /* Interactive Glow */
+        .btn-glow {
+            background: linear-gradient(90deg, #ff2d75 0%, #d4005d 100%);
+            box-shadow: 0 0 20px rgba(255, 45, 117, 0.3);
+            transition: all 0.3s ease;
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 30px rgba(255, 45, 117, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* Section Transitions */
+        .section-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+            transform: scale(0.95);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .section-container.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+            z-index: 10;
+        }
+
+        /* Polaroid */
+        .polaroid {
+            background: white;
+            padding: 10px 10px 40px 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+        .polaroid:hover {
+            transform: scale(1.05) rotate(0deg) !important;
+            z-index: 10;
+        }
+        
+        /* Typography Helpers */
+        .script-text {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+
+        /* Particle Animations (Simplified CSS for structural demo) */
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            50% { opacity: 0.6; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+        .particle {
+            position: absolute;
+            bottom: -10%;
+            animation: float linear infinite;
+            color: #ff2d75;
+            font-size: 1.5rem;
+            opacity: 0.4;
+        }
+
+        /* Hide scrollbar for cleaner look */
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="antialiased">
+<div class="ambient-glow"></div>
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" id="particles-container"></div>
+<!-- Top App Bar (Only visible logically on later sections, but built for structure) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile py-4 bg-transparent opacity-0 transition-opacity duration-500" id="global-header">
+<div class="font-display-script text-headline-md text-primary drop-shadow-[0_0_10px_rgba(255,45,117,0.5)]">Our World</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary hover:text-primary transition-colors duration-300 cursor-pointer" style="font-variation-settings: 'FILL' 1;">music_note</span>
+<span class="material-symbols-outlined text-primary hover:text-primary transition-colors duration-300 cursor-pointer" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</header>
+<!-- SECTION 1: Login -->
+<section class="section-container active" id="section-1">
+<div class="flex flex-col items-center justify-center max-w-md w-full z-10 gap-stack-md">
+<div class="text-center">
+<span class="material-symbols-outlined text-primary text-6xl drop-shadow-[0_0_15px_rgba(255,45,117,0.8)] mb-4" style="font-variation-settings: 'FILL' 1;">lock</span>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-2">Access Our World</h1>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center justify-center gap-2">
+                    A special place, just for you <span class="material-symbols-outlined text-sm text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+</p>
+</div>
+<div class="glass-card w-full rounded-xl p-8 flex flex-col gap-6">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">person</span>
+<input class="w-full bg-surface-container-lowest/50 border border-outline-variant rounded-lg py-3 pl-12 pr-4 text-on-surface font-body-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" id="username" readonly="" type="text" value="Bro"/>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">lock</span>
+<input class="w-full bg-surface-container-lowest/50 border border-outline-variant rounded-lg py-3 pl-12 pr-12 text-on-surface font-body-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" id="password" placeholder="Enter password..." type="password"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant cursor-pointer hover:text-primary">visibility</span>
+</div>
+<button class="btn-glow w-full py-3 rounded-full font-label-sm text-label-sm text-white flex items-center justify-center gap-2 mt-2" onclick="nextSection(2)">
+                    Unlock Surprise <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+</div>
+<div class="w-full flex flex-col items-center gap-4 mt-8">
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-2 text-sm">
+<span class="material-symbols-outlined text-xs text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+                    Made with Love by Umar
+                    <span class="material-symbols-outlined text-xs text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+</p>
+</div>
+</div>
+</section>
+<!-- SECTION 2: Birthday Hero -->
+<section class="section-container" id="section-2">
+<div class="text-center flex flex-col items-center justify-center max-w-2xl z-10 gap-stack-md">
+<div class="mb-4">
+<h2 class="font-display-lg text-display-lg text-on-surface tracking-wide">Happy</h2>
+<h1 class="font-display-script text-[72px] md:text-[96px] text-primary drop-shadow-[0_0_20px_rgba(255,45,117,0.6)] -mt-4 script-text">Birthday</h1>
+<h2 class="font-display-lg text-display-lg text-on-surface flex items-center justify-center gap-4">
+                    Bro
+                    <span class="material-symbols-outlined text-5xl text-primary drop-shadow-[0_0_15px_rgba(255,45,117,0.8)]" style="font-variation-settings: 'FILL' 1;">star</span>
+</h2>
+</div>
+<p class="font-label-sm text-label-sm text-primary flex items-center gap-2 uppercase tracking-widest mb-4">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                22 August
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</p>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md mx-auto mb-8 text-center leading-relaxed">
+                Today is all about you and the great times we've shared. Let's celebrate our brotherhood!
+            </p>
+<button class="btn-glow py-3 px-8 rounded-full font-label-sm text-label-sm text-white flex items-center justify-center gap-2" onclick="nextSection(3)">
+                Unfold Memories <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+</div>
+</section>
+<!-- SECTION 3: Memories -->
+<section class="section-container" id="section-3">
+<div class="w-full max-w-5xl z-10 flex flex-col items-center gap-stack-lg py-12">
+<h2 class="font-display-lg text-headline-md md:text-display-lg text-on-surface text-center flex items-center justify-center gap-4">
+<span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+                Our Epic Memories
+                <span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+</h2>
+<p class="font-body-md text-body-md text-on-surface-variant -mt-8">Brotherhood moments that mean everything</p>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 w-full px-4">
+<!-- Polaroid 1 -->
+<div class="polaroid transform -rotate-3 hover:z-20 relative">
+<span class="material-symbols-outlined absolute -top-4 -right-4 text-3xl text-primary drop-shadow-md z-10" style="font-variation-settings: 'FILL' 1;">star</span>
+<img class="w-full h-48 object-cover bg-surface-container mb-3 border border-gray-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBD5RtuKMJddirnRR63Hf8vOujKNShPBy_-HSDlbi9b6juco-F28xZUfXwAM_6F50BRbgaB1NZWTNGhJf9nuCWap_vaEV6O0uiTYsDm_8SDBDf29KDe7ISdO5Xom2jn5Ny51aHcaJDNmnuAofNnTQTVpDvBO8I5ftg5k-UM2k0YM_bRVhP1WhynSOrOHXvu-jzYCFqZZxLIeCMd1AqTjd56zcg5N_UKaAGdFkvpm2NeH1M3baBhxa5w6Q"/>
+<p class="font-display-script text-xl text-surface-container-highest text-center script-text">Good Times</p>
+</div>
+<!-- Polaroid 2 -->
+<div class="polaroid transform rotate-2 mt-4 hover:z-20 relative">
+<span class="material-symbols-outlined absolute -top-4 -right-4 text-3xl text-primary drop-shadow-md z-10" style="font-variation-settings: 'FILL' 1;">star</span>
+<img class="w-full h-48 object-cover bg-surface-container mb-3 border border-gray-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByyqzW4QDXBpbmexmajWmcX3pQxXsFkBePxW_3ZyIzpUiQ_3xsuaCbvlkybDTOR0X2xE2leReTRFk_k6hd8MnOIlixZrnsHvq6tarVoMxGIIXJjkzd1ylK3u81Z6R30ejLK4_bP6XPqCbSlN_I1dnAF45iB99fK7oszhCZuz1C58vB_OsPfR1v3DM1m3RB_f2web0JjV_7RECLIY4I_WZKEluimkTA5O1MREViPZPlGLOrDxcxqxqNwA"/>
+<p class="font-display-script text-xl text-surface-container-highest text-center script-text">Best Mates</p>
+</div>
+<!-- Polaroid 3 -->
+<div class="polaroid transform -rotate-2 mt-8 hover:z-20 relative">
+<span class="material-symbols-outlined absolute -top-4 -right-4 text-3xl text-primary drop-shadow-md z-10" style="font-variation-settings: 'FILL' 1;">star</span>
+<img class="w-full h-48 object-cover bg-surface-container mb-3 border border-gray-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChZ9zd73VIbgAhWyuo_MI7TO2P-1Vy4eh8L-inkizb5DfgtzVDrxBkEL8I1CSQVd4Cxj4cSqBTOg8H9sxAWzeRID-6Zj8HecT-TtJEvclku1NJRqrfqGAEZ8Z08erj2Sa2hgUykxOHCju78uHzYoHfEIK5vTTmsGfGRYsYoisThH4QLj9ecmQN75iTD-e3NKrBV_ZeJHhAgmkvYlgSxxHDOyFxNFFULoKX63bXsNiIBPwsTTmEVGgZ_A"/>
+<p class="font-display-script text-xl text-surface-container-highest text-center script-text">Celebrations</p>
+</div>
+<!-- Polaroid 4 -->
+<div class="polaroid transform rotate-3 mt-2 hover:z-20 relative">
+<span class="material-symbols-outlined absolute -top-4 -right-4 text-3xl text-primary drop-shadow-md z-10" style="font-variation-settings: 'FILL' 1;">star</span>
+<img class="w-full h-48 object-cover bg-surface-container mb-3 border border-gray-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBScoH-L2EzhW4vgxFkHDaOzW7gr7mYg3rprXIIHw707Q_ySbBUFzbRJ7baQxzJ-2wKCEYmE5yC7HqwIEL5wCnb40I89Im6SEL4pkdmN24Wj33vEf8ljvY-zWnLVDnqBgl1Ox7DKy1g9eXHm3ryokTNiHAHKImyyjKTI98mX2_lJKtcqHOGDiq0zmKhdXjg_LyJNJfZ_Xx5jnfp59wT6E-xL1CFbuRpowhoXxL_TenFqkU9Sd4qo-VzBw"/>
+<p class="font-display-script text-xl text-surface-container-highest text-center script-text">On the Road</p>
+</div>
+</div>
+<button class="btn-glow mt-8 py-3 px-8 rounded-full font-label-sm text-label-sm text-white flex items-center justify-center gap-2" onclick="nextSection(4)">
+                Play My Movie <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+</button>
+</div>
+</section>
+<!-- SECTION 4: Video -->
+<section class="section-container" id="section-4">
+<div class="w-full max-w-4xl z-10 flex flex-col items-center gap-stack-md py-12">
+<h2 class="font-display-lg text-headline-md md:text-display-lg text-on-surface text-center flex items-center justify-center gap-4 mb-4">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                Our Special Video
+                <span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</h2>
+<div class="glass-card w-full rounded-2xl p-2 relative overflow-hidden aspect-video shadow-2xl">
+<!-- Video Placeholder -->
+<div class="w-full h-full bg-surface-container-highest rounded-xl relative flex items-center justify-center" data-alt="A stunning, dramatic sunset landscape featuring the silhouettes of a couple standing together against a vibrant, fiery sky transitioning into deep twilight hues. The mood is highly cinematic, deeply romantic, and evokes a strong sense of timelessness and connection. High-fidelity glassmorphism aesthetic context." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB0yq-ZpYgxNKkTn0TcnwmfIPFUobipERB8zksIPDqXCGBiERa_UfnUhbTJkKl-lfw-e1CSIFqypGzNdAchxEjirQkMN1EfJi7gl1bvja8AZGH9cMsOzHkI8dsIreh9MxC8sox2k1LPN6cL2w5BKjyg4SX4obTkKRTmfwyxTQR8gip4AqQnyxG8yZ4KJ0f8Drbl3gG-2wDU3BrRc6T-Mdf4YkjmeWVFaOXmHrwiD-iB3b5C7I5eO0YDKA'); background-size: cover; background-position: center;">
+<div class="absolute inset-0 bg-black/40 rounded-xl"></div>
+<!-- Play Button -->
+<div class="w-20 h-20 bg-primary/80 backdrop-blur-md rounded-full flex items-center justify-center cursor-pointer hover:bg-primary transition-colors z-10 shadow-[0_0_30px_rgba(255,45,117,0.6)]">
+<span class="material-symbols-outlined text-white text-5xl ml-2" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+<!-- Fake Controls -->
+<div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent flex items-center gap-4 z-10 rounded-b-xl">
+<span class="material-symbols-outlined text-white text-sm cursor-pointer">play_arrow</span>
+<div class="text-white font-label-sm text-[10px]">00:00 / 02:45</div>
+<div class="flex-1 h-1 bg-white/30 rounded-full relative cursor-pointer">
+<div class="absolute top-0 left-0 h-full w-1/3 bg-primary rounded-full relative">
+<div class="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow-md"></div>
+</div>
+</div>
+<span class="material-symbols-outlined text-white text-sm cursor-pointer">volume_up</span>
+<span class="material-symbols-outlined text-white text-sm cursor-pointer">fullscreen</span>
+</div>
+</div>
+</div>
+<button class="btn-glow mt-8 py-3 px-8 rounded-full font-label-sm text-label-sm text-white flex items-center justify-center gap-2" onclick="nextSection(5)">
+                Final Surprise <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+</div>
+</section>
+<!-- SECTION 5: Letter -->
+<section class="section-container" id="section-5">
+<div class="w-full max-w-3xl z-10 flex flex-col items-center gap-stack-md py-12">
+<h2 class="font-display-lg text-headline-md md:text-display-lg text-on-surface text-center flex items-center justify-center gap-4">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+                A Letter From Umar
+                <span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</h2>
+<p class="font-body-md text-body-md text-on-surface-variant -mt-4 mb-4 text-sm">Written with true brotherhood</p>
+<div class="glass-card w-full rounded-2xl p-8 md:p-12 relative border border-primary/30 shadow-[0_0_40px_rgba(255,45,117,0.1)]">
+<!-- Decorative Elements -->
+<span class="material-symbols-outlined absolute top-6 left-6 text-primary/40 text-3xl" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined absolute bottom-6 right-6 text-primary/40 text-3xl transform rotate-180" style="font-variation-settings: 'FILL' 1;">star</span>
+<div class="text-center font-display-script text-xl md:text-2xl text-on-surface leading-loose script-text max-w-lg mx-auto">
+<p class="mb-4">To the best mate in my life,</p>
+<p class="text-primary text-3xl mb-4 font-bold">Bro,</p>
+<p class="mb-4">We've shared so many great times and epic moments. Thank you for your true friendship, your loyalty and for always being there for each other.</p>
+<p class="mb-6">I am so lucky to have a brother like you. I hope this birthday brings you as much joy as the legendary times we've had.</p>
+<p class="text-primary text-2xl font-bold mb-8 flex items-center justify-center gap-2">
+                        Happy Birthday, Bro! <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+</p>
+<div class="flex flex-col items-end mr-8">
+<p class="text-primary/80">Forever your brother,</p>
+<p class="text-primary text-3xl">Umar</p>
+</div>
+</div>
+<!-- Icons (Envelope & Quill) simulated with material symbols for now, but styled to fit -->
+<div class="absolute -bottom-8 -left-4 w-24 h-24 bg-surface-container border border-white/10 rounded-lg transform -rotate-12 flex items-center justify-center shadow-xl opacity-80 backdrop-blur-md">
+<span class="material-symbols-outlined text-primary text-5xl">mail</span>
+</div>
+<div class="absolute -bottom-8 -right-4 w-20 h-20 transform rotate-12 flex items-center justify-center opacity-80">
+<span class="material-symbols-outlined text-primary text-6xl drop-shadow-[0_0_10px_rgba(255,45,117,0.8)]">history_edu</span>
+</div>
+</div>
+<button class="mt-12 text-primary/60 hover:text-primary transition-colors cursor-pointer flex flex-col items-center" onclick="nextSection(6)">
+<span class="material-symbols-outlined">expand_more</span>
+<span class="text-xs uppercase tracking-widest">Continue</span>
+</button>
+</div>
+</section>
+<!-- SECTION 6: Finale -->
+<section class="section-container relative" id="section-6">
+<!-- Assume Fireworks animation here via CSS or JS later -->
+<div class="w-full max-w-2xl z-10 flex flex-col items-center gap-stack-lg py-12 mb-32">
+<div class="text-center">
+<h2 class="font-display-lg text-headline-md md:text-display-lg text-on-surface tracking-wide">Happy Birthday,</h2>
+<h1 class="font-display-script text-[64px] md:text-[80px] text-primary drop-shadow-[0_0_20px_rgba(255,45,117,0.8)] -mt-2 script-text flex items-center justify-center gap-4">
+                    Bro
+                    <span class="material-symbols-outlined text-5xl text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+</h1>
+</div>
+<div class="relative w-64 h-64 mt-8 flex flex-col items-center justify-end group cursor-pointer">
+<!-- Cake Placeholder -->
+<div class="w-48 h-40 bg-gradient-to-b from-[#2a0815] to-[#1a040b] border border-primary/20 rounded-t-xl relative flex flex-col items-center justify-start pt-4 shadow-[0_0_50px_rgba(255,45,117,0.2)]">
+<!-- Candle -->
+<div class="w-2 h-12 bg-white/80 rounded-t-sm absolute -top-10 left-1/2 -translate-x-1/2">
+<div class="w-4 h-6 bg-[#ffdb58] rounded-full absolute -top-6 left-1/2 -translate-x-1/2 blur-[2px] animate-pulse shadow-[0_0_15px_#ffdb58]"></div>
+</div>
+<!-- Frosting details -->
+<div class="w-full flex justify-between px-2 absolute top-0 -translate-y-1/2">
+<div class="w-6 h-6 bg-primary rounded-full drop-shadow-md"></div>
+<div class="w-6 h-6 bg-primary rounded-full drop-shadow-md"></div>
+<div class="w-6 h-6 bg-primary rounded-full drop-shadow-md"></div>
+<div class="w-6 h-6 bg-primary rounded-full drop-shadow-md"></div>
+<div class="w-6 h-6 bg-primary rounded-full drop-shadow-md"></div>
+</div>
+<span class="material-symbols-outlined text-primary/50 text-6xl mt-4" style="font-variation-settings: 'FILL' 1;">cake</span>
+</div>
+<div class="absolute -bottom-16 w-[150%] text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+<p class="text-sm text-on-surface-variant font-body-md leading-relaxed">
+                        Thank you for being my best mate,<br/>my brother and my everything.<br/>
+<span class="text-primary font-semibold">Forever yours, Umar <span class="material-symbols-outlined text-xs align-middle" style="font-variation-settings: 'FILL' 1;">star</span></span>
+</p>
+</div>
+</div>
+</div>
+<!-- Bottom Nav Bar (From JSON) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 bg-surface/10 backdrop-blur-md rounded-t-xl shadow-[0_-4px_24px_rgba(255,45,117,0.15)]">
+<!-- Item 1 -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:text-primary/80 transition-all" href="#">
+<span class="material-symbols-outlined mb-1">auto_stories</span>
+<span class="font-label-sm text-[10px] tracking-wider uppercase">Our Story</span>
+</a>
+<!-- Item 2 -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:text-primary/80 transition-all" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-[10px] tracking-wider uppercase">Brotherhood</span>
+</a>
+<!-- Item 3 (Active based on 'Forever Yours' theme ending) -->
+<a class="flex flex-col items-center justify-center text-primary drop-shadow-[0_0_8px_rgba(255,45,117,0.8)] scale-110 duration-200" href="#">
+<span class="material-symbols-outlined mb-1">all_inclusive</span>
+<span class="font-label-sm text-[10px] tracking-wider uppercase">Forever Us</span>
+</a>
+<!-- Item 4 -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:text-primary/80 transition-all" href="#">
+<span class="material-symbols-outlined mb-1">celebration</span>
+<span class="font-label-sm text-[10px] tracking-wider uppercase">Always</span>
+</a>
+</nav>
+</section>
+<!-- Logic -->
+<script>
+        // Data
+        const DATA = {
+            NAME: "Bro",
+            DATE: "22 August",
+            PASSWORD: "love"
+        };
+
+        let currentSection = 1;
+        const totalSections = 6;
+
+        function nextSection(targetId) {
+            // Basic password check on section 1
+            if(currentSection === 1) {
+                const pass = document.getElementById('password').value.toLowerCase();
+                if(pass !== DATA.PASSWORD && pass !== '') {
+                    // Quick shake animation could go here
+                    document.getElementById('password').classList.add('border-error');
+                    setTimeout(() => document.getElementById('password').classList.remove('border-error'), 1000);
+                    // return; // Uncomment to enforce password
+                }
+            }
+
+            // Hide current
+            document.getElementById(`section-${currentSection}`).classList.remove('active');
+            
+            // Show header after login
+            if(targetId > 1) {
+                document.getElementById('global-header').classList.remove('opacity-0');
+            }
+
+            // Show next
+            currentSection = targetId;
+            const nextEl = document.getElementById(`section-${currentSection}`);
+            nextEl.classList.add('active');
+            
+            // Re-trigger animations if needed
+            createParticles();
+        }
+
+        // Particle System
+        function createParticles() {
+            const container = document.getElementById('particles-container');
+            container.innerHTML = ''; // clear existing
+            
+            const numParticles = 20;
+            for(let i=0; i<numParticles; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle material-symbols-outlined';
+                particle.innerHTML = 'star';
+                
+                // Random properties
+                const size = Math.random() * 20 + 10;
+                const left = Math.random() * 100;
+                const animDuration = Math.random() * 10 + 10;
+                const delay = Math.random() * 10;
+                const fill = Math.random() > 0.5 ? 1 : 0;
+                
+                particle.style.cssText = `
+                    left: ${left}%;
+                    font-size: ${size}px;
+                    animation-duration: ${animDuration}s;
+                    animation-delay: -${delay}s;
+                    font-variation-settings: 'FILL' ${fill};
+                `;
+                
+                container.appendChild(particle);
+            }
+        }
+
+        // Init
+        createParticles();
+    </script>
+</body></html>
